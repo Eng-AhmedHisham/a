@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090817">
+  <meta name="description" content="رحلة عيد ميلاد سحرية صُممت خصيصًا لإسراء.">
+  <meta name="color-scheme" content="dark">
+  <title>إسراء | عالمكِ السحري</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <div id="stars" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="top-progress" aria-hidden="true"><span id="progress"></span></div>
+
+  <header class="sound-dock" aria-label="إعدادات الصوت">
+    <button id="sound" class="icon-btn" type="button" aria-label="تشغيل الموسيقى" title="تشغيل أو إيقاف الموسيقى">♪</button>
+    <span class="audio-note">موسيقى الرحلة</span>
+  </header>
+  <audio id="birthdaySong" src="assets/birthday-song.mp3" preload="auto" loop></audio>
+
+  <main id="app">
+    <section class="page active" data-page="0" aria-label="بوابة البداية">
+      <div class="page-content intro-content">
+        <div class="eyebrow">A MAGICAL JOURNEY BEGINS</div>
+        <div class="portal-wrap" aria-hidden="true">
+          <div class="portal"><div class="portal-core"></div></div>
+          <span class="rune rune-one">✧</span><span class="rune rune-two">☾</span><span class="rune rune-three">✦</span>
+        </div>
+        <h1 class="display-title gold">هناك عالمٌ<br>ينتظركِ</h1>
+        <p class="lead">خلف هذه البوابة حكاية لم تُكتب من قبل…<br>وحكاية الليلة لها بطلة واحدة فقط.</p>
+        <button class="btn btn-primary" id="enterBtn" type="button">ادخلي الحكاية <span>✧</span></button>
+        <div class="micro-copy">A LITTLE MAGIC, MADE JUST FOR YOU</div>
+      </div>
+    </section>
+
+    <section class="page" data-page="1" aria-label="الفصل الأول">
+      <div class="page-content">
+        <div class="eyebrow">CHAPTER I · THE CHOSEN ONE</div>
+        <article class="glass reveal-card">
+          <div class="ornament">✧</div>
+          <h2>في هذا الكون الواسع…</h2>
+          <p class="lead">هناك أشخاص لا يشبهون أحدًا، وجودهم وحده يجعل الأيام أحنّ، والضحكة أصدق، والحياة أجمل.</p>
+          <p class="lead compact">والليلة، ستعرفين أن كل هذا العالم السحري صُمم من أجل…</p>
+          <div class="reveal-name">إسراء</div>
+          <div class="eyebrow bottom-eyebrow">THE MOST PRECIOUS SOUL</div>
+        </article>
+        <div class="actions"><button class="btn btn-primary" data-next="2" data-unlock="2" type="button">اكتشفي عالمكِ</button></div>
+      </div>
+    </section>
+
+    <section class="page" data-page="2" aria-label="الفصل الثاني: صندوق الأقفال">
+      <div class="floating-islands" aria-hidden="true"><i class="island i1"></i><i class="island i2"></i><i class="island i3"></i></div>
+      <div class="page-content wide-content">
+        <div class="eyebrow">CHAPTER II · THE COLOR-LOCK CHEST</div>
+        <h2 class="section-title gold">صندوق الأقفال الملونة</h2>
+        <p class="lead">اسحبي كل حجر إلى مكانه الصحيح. عندما تكتمل الأقفال الثلاثة سيفتح الصندوق وتظهر المفاجأة.</p>
+        <div class="glass lock-box">
+          <div class="treasure-chest" id="treasureChest" aria-label="صندوق مغلق"><div class="chest-lid"></div><div class="chest-body"><span class="chest-emblem">✦</span><span class="chest-lock">🔒</span></div></div>
+          <div class="lock-slots" id="lockSlots">
+            <div class="lock-slot active-target" data-step="0" data-accept="gold"><span class="socket-dot gold-dot">1</span><b>المكان الذهبي</b><small>اسحبي الحجر هنا</small></div>
+            <div class="lock-slot" data-step="1" data-accept="pink"><span class="socket-dot pink-dot">2</span><b>المكان الوردي</b><small>في الانتظار</small></div>
+            <div class="lock-slot" data-step="2" data-accept="violet"><span class="socket-dot violet-dot">3</span><b>المكان البنفسجي</b><small>في الانتظار</small></div>
+          </div>
+          <div class="stones-tray" id="stonesTray" aria-label="الأحجار المتاحة">
+            <button class="color-stone" data-color="violet" draggable="true" type="button"><i class="stone-swatch violet-dot"></i><b>حجر بنفسجي</b></button>
+            <button class="color-stone" data-color="gold" draggable="true" type="button"><i class="stone-swatch gold-dot"></i><b>حجر ذهبي</b></button>
+            <button class="color-stone" data-color="pink" draggable="true" type="button"><i class="stone-swatch pink-dot"></i><b>حجر وردي</b></button>
+          </div>
+          <div class="unlocked-traits-row" id="unlockedTraits" hidden>
+            <div class="unlocked-trait-card" data-trait-slot="0"></div>
+            <div class="unlocked-trait-card" data-trait-slot="1"></div>
+            <div class="unlocked-trait-card" data-trait-slot="2"></div>
+          </div>
+          <p id="chestStatus" class="feedback" aria-live="polite">الصندوق مغلق · اسحبي الحجر الذهبي إلى مكانه</p>
+        </div>
+        <div class="actions"><button class="btn btn-primary" id="wishNext" data-next="3" type="button" disabled>افتحي صندوق الرسالة</button></div>
+      </div>
+    </section>
+
+    <section class="page" data-page="3" aria-label="الفصل الثالث: رسالة من أخيك">
+      <div class="page-content">
+        <div class="eyebrow">CHAPTER III · A LETTER FROM THE HEART</div>
+        <div class="seal" aria-hidden="true">✉</div>
+        <h2 class="section-title gold">رسالة من أخيكِ</h2>
+        <article class="glass letter">
+          <p>إلى إسراء…</p>
+          <p>يمكن الكلام مهما طال مش هيقدر يوصف مكانتك عندي، ولا يقدر يشرح قد إيه وجودك في حياتي نعمة كبيرة.</p>
+          <p>إنتِ مش بس أختي، إنتِ حتة غالية من قلبي، وضحكة بتخفف أي يوم صعب، وواحدة من أجمل الحاجات اللي ربنا رزقني بيها.</p>
+          <p>بتمنالك سنة جديدة مليانة راحة بال، ونجاح يفرّح قلبك، وأيام تشبه جمال روحك. أتمنى كل حاجة نفسك فيها تقرب منك، وكل حزن يبعد عنك.</p>
+          <p>خليكي دايمًا زي ما إنتِ… أجمل وأحن أخت في العالم. ومهما كبرنا أو اتغيرت الأيام، هتفضلي أختي وحبيبتي وفخري.</p>
+          <p class="signature">أخوكي اللي بيحبك… دائمًا 🤍</p>
+        </article>
+        <div class="actions"><button class="btn btn-primary" data-next="4" data-unlock="4" type="button">جاهزة للتحدي التالي؟</button></div>
+      </div>
+    </section>
+
+    <section class="page" data-page="4" aria-label="الفصل الرابع: كوكبة إسراء">
+      <div class="page-content wide-content constellation-page">
+        <div class="eyebrow">CHAPTER IV · CONSTELLATION OF ESRAA</div>
+        <h2 class="section-title gold">كوكبة اسم إسراء</h2>
+        <p class="lead">في السماء نجوم حروف اسمكِ المضيئة… اختاري حروف اسم <strong>إسراء</strong> بالترتيب الصحيح لتكتمل كوكبتكِ في السماء.</p>
+        <div class="glass constellation-card">
+          <div class="constellation-top"><span class="constellation-count" id="starCount">✦ 0 / 5 نجوم</span><span class="constellation-hint">ابدئي بحرف إ ثم س ثم ر ثم ا ثم ء</span></div>
+          <div class="star-map" id="starMap">
+            <svg class="constellation-lines" viewBox="0 0 600 300" preserveAspectRatio="none" aria-hidden="true"><polyline id="starLines" points=""></polyline></svg>
+            <button class="sky-star" data-star="0" style="--x:84%;--y:22%" type="button" aria-label="نجمة حرف إ"><span>إ</span><small>نجم الإشراق</small></button>
+            <button class="sky-star" data-star="1" style="--x:66%;--y:48%" type="button" aria-label="نجمة حرف س"><span>س</span><small>نجم السعادة</small></button>
+            <button class="sky-star" data-star="2" style="--x:48%;--y:20%" type="button" aria-label="نجمة حرف ر"><span>ر</span><small>نجم الرقة</small></button>
+            <button class="sky-star" data-star="3" style="--x:30%;--y:54%" type="button" aria-label="نجمة حرف ا"><span>ا</span><small>نجم الأمل</small></button>
+            <button class="sky-star" data-star="4" style="--x:14%;--y:26%" type="button" aria-label="نجمة حرف ء"><span>ء</span><small>نجم النور</small></button>
+            <button class="sky-star" data-star="5" style="--x:50%;--y:82%" type="button" aria-label="نجمة السحر"><span>✦</span><small>نجم السحر</small></button>
+          </div>
+          <p class="star-reveal" id="starReveal" aria-live="polite">كل نجمة تضيء حرفًا من حكايتكِ… اختاري أول نجمة ✨</p>
+          <div class="constellation-result" id="constellationResult" hidden>
+            <div class="result-crown">✦</div><h3>اكتملت كوكبتكِ في السماء…</h3>
+            <div class="result-name gold">إسراء</div>
+            <p>نجومكِ اجتمعت الليلة لتكتب اسمكِ في السماء بنور لا ينطفئ. ليكن عامكِ مليئًا بالأمل، والفرح، وكل ما يجعل قلبكِ يلمع.</p>
+            <div class="constellation-blessing">«أنتِ لستِ نجمة في السماء… أنتِ السماء حين تبتسم»</div>
+            <button class="btn btn-primary" data-next="5" type="button">افتحي مفاجأة الكون ✨</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" data-page="5" aria-label="الفصل الخامس: شموع الأمنيات">
+      <div class="page-content">
+        <div class="eyebrow">CHAPTER V · MAKE A WISH</div>
+        <h2 class="section-title gold">شموع الأمنيات</h2>
+        <p class="lead">خدي نفسًا عميقًا… وتمني أمنية من قلبك، ثم أطفئي الشمعة بالزر أو بالنفخ في المايك.</p>
+        <div class="cake-area">
+          <div class="cake" id="cake"><div class="cake-top"></div><div class="cake-body"></div><div class="icing"></div><div class="candle"><div class="flame"></div><div class="smoke"></div></div></div>
+        </div>
+        <p class="cake-instruction" id="cakeText" aria-live="polite">اضغطي على الزر أو فعّلي النفخ بالمايك</p>
+        <div class="actions">
+          <button class="btn btn-primary" id="blow" type="button">أطفئي الشمعة ✨</button>
+          <button class="btn btn-ghost" id="micBlowBtn" type="button">النفخ بالمايك 🎤</button>
+        </div>
+        <div id="micMeter" class="mic-meter" hidden><span id="micBar"></span></div>
+        <div class="actions"><button class="btn btn-ghost" id="cakeNext" data-next="6" type="button" hidden>إلى المفاجأة الأخيرة</button></div>
+      </div>
+    </section>
+
+    <section class="page" data-page="6" aria-label="الفصل الأخير">
+      <div class="page-content">
+        <div class="eyebrow">FINAL CHAPTER · FOREVER YOUR BROTHER</div>
+        <div class="final-star">✦</div>
+        <h1 class="display-title gold">كل سنة وإنتِ<br>نور الحكاية</h1>
+        <p class="lead">يا إسراء، أتمنى لكِ عمرًا مليئًا بالطمأنينة، وقلبًا لا يعرف إلا الفرح، وأيامًا تليق بروحك الجميلة.</p>
+        <article class="glass birthday-card">
+          <div class="eyebrow">YOUR BIRTHDAY</div>
+          <h2 class="birthday-date">20 · 11 · 2005</h2>
+          <p class="birthday-subtitle">أجمل وأحن أخت في العالم 🤍</p>
+          <div id="chosenConstellationSummary" class="chosen-stars-badge" hidden></div>
+          <p id="ageCounter" class="clock-line"></p>
+          <p id="birthdayCountdown" class="clock-line"></p>
+        </article>
+        <div class="actions"><button class="btn btn-primary" id="restartBtn" type="button">عيشي الحكاية من جديد ↺</button></div>
+      </div>
+    </section>
+  </main>
+
+  <nav id="nav" class="chapter-nav" aria-label="مراحل الرحلة"></nav>
+  <div id="transition" aria-hidden="true"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
